@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+interface Leverstrategie {
+    void lever();
+}
+
+interface Observer {
+    void update(Bestelling bestelling);
+}
+
 abstract class Bestelling {
     public final void verwerk() {
         selecteerGerecht();
@@ -83,10 +91,6 @@ class SaladeBestelling extends Bestelling {
     }
 }
 
-interface Leverstrategie {
-    void lever();
-}
-
 class FietsLevering implements Leverstrategie {
     public void lever() {
         System.out.println("Bezorgd met de fiets.");
@@ -103,10 +107,6 @@ class AfhalenLevering implements Leverstrategie {
     public void lever() {
         System.out.println("Klant komt afhalen.");
     }
-}
-
-interface Observer {
-    void update(Bestelling bestelling);
 }
 
 class Keuken implements Observer {
